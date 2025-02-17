@@ -1,30 +1,17 @@
 import { useMsal } from "@azure/msal-react";
-import { useEffect, useState } from "react";
 
 const LoginButton = () => {
   const { instance, accounts } = useMsal();
-  const [msalReady, setMsalReady] = useState(false);
   const isAuthenticated = accounts.length > 0;
+  const firstName = accounts[0].name?.split(" ")[0];
 
-  useEffect(() => {
-    const initializeAuth = async () => {
-      try {
-        await instance.initialize(); 
-        await instance.handleRedirectPromise(); 
-        setMsalReady(true);
-      } catch (err) {
-        console.error("Redirect handling error:", err);
-      }
-    };
-    initializeAuth();
-  }, [instance]);
 
-  if (isAuthenticated || !msalReady) {
-    return null;
-  }
+  if (isAuthenticated) {
+  return <p className="text-indigo-400 font-semibold">Welcome, {firstName}</p>;
+}
 
   return (
-    <button className="bg-green-500 text-white px-6 py-2 rounded-lg shadow-lg text-lg font-semibold hover:bg-green-600 transition-all mt-4" onClick={() => instance.loginRedirect({ scopes: ["User.Read"] })}>
+    <button className="bg-teal-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-teal-500 transition" onClick={() => instance.loginRedirect({ scopes: ["User.Read"] })}>
       Login
     </button>
   );

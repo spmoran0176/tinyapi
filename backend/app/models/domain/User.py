@@ -3,7 +3,10 @@ from pydantic import BaseModel
 
 
 class User(BaseModel):
-    id: str
     name: str
-    preferred_username: str
+    given_name: str
+    email: str
+    id: str
+    tenant_id: str
     groups: List[str]
+    ipaddr: str

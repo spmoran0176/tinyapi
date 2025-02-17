@@ -56,10 +56,13 @@ class EntraAuthorization(OAuth2AuthorizationCodeBearer):
             raise InvalidAuthorization(detail='Unable to extract user details from token')
 
         return User(
-            id=user_id,
             name=decoded_token.get('name', ''),
-            preferred_username=decoded_token.get('preferred_username', ''),
-            groups=decoded_token.get('groups', [])
+            given_name=decoded_token.get('given_name', ''),
+            email=decoded_token.get('email', ''),
+            id=user_id,
+            tenant_id=decoded_token.get('tid', ''),
+            groups=decoded_token.get('groups', []),
+            ipaddr=decoded_token.get('ipaddr', ''),
         )
 
     @staticmethod
