@@ -1,5 +1,5 @@
 import AuthButton from "./LoginButton";
-import UserInfo from "./UserInfo";
+import PresignedUrl from "./PresignedUrl";
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
           <AuthButton />
         </div>
         <div className="text-gray-900 rounded-2xl min-h-[300px] flex flex-col justify-center">
-          <UserInfo />
+          <PresignedUrl />
         </div>
       </div>
     </div>
