@@ -3,8 +3,7 @@ import { useMsal } from "@azure/msal-react";
 const LoginButton = () => {
   const { instance, accounts } = useMsal();
   const isAuthenticated = accounts.length > 0;
-  const firstName = accounts[0].name?.split(" ")[0];
-
+  const firstName = isAuthenticated ? accounts[0].name?.split(" ")[0] : null;
 
   if (isAuthenticated) {
   return <p className="text-indigo-400 font-semibold">Welcome, {firstName}</p>;
