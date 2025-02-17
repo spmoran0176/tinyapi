@@ -2,8 +2,8 @@ import { PublicClientApplication, EventType } from "@azure/msal-browser";
 
 const msalConfig = {
   auth: {
-    clientId: import.meta.env.VITE_CLIENT_ID,
-    authority: `https://login.microsoftonline.com/${import.meta.env.VITE_CLIENT_ID}`,
+    clientId: import.meta.env.VITE_AZURE_FRONTEND_CLIENT_ID,
+    authority: `https://login.microsoftonline.com/${import.meta.env.VITE_AZURE_TENANT_ID}`,
     redirectUri: "http://localhost:5173",
   },
   cache: {
